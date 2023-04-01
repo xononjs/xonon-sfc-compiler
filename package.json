@@ -5,10 +5,12 @@
   "main": "./build/index.cjs",
   "type": "module",
   "module": "./build/index.mjs",
+  "types": "./types/index.d.ts",
   "scripts": {
     "build:common": "tsc && pnpx rollup -c rollup.config.js -f cjs -o build/index.cjs",
     "build:module": "tsc && pnpx rollup -c rollup.config.js -f module -o build/index.mjs",
-    "build": "pnpm build:common && pnpm build:module"
+    "build": "pnpm build:common && pnpm build:module",
+    "publish": "pnpm publish --no-git-checks --access public"
   },
   "keywords": [],
   "author": "",
