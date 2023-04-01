@@ -2,14 +2,14 @@ import { parseFragment } from 'parse5'
 import { readFileSync } from 'fs'
 
 const FileParser = {
-  readFile (path) {
-    const source = readFileSync(path, { encoding: 'utf8' })
-    const fragment = parseFragment(source)
+  readFile(contents: string) {
+    // const source = readFileSync(path, { encoding: 'utf8' })
+    const fragment = parseFragment(contents)
 
     return this.extract(fragment)
   },
 
-  extract (fragment) {
+  extract(fragment) {
     const tags: any = []
     let code = ''
 

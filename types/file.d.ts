@@ -1,5 +1,5 @@
 declare const FileParser: {
-    readFile(path: any): {
+    readFile(contents: string): {
         code: string;
         tags: any;
     };

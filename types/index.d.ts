@@ -1,1 +1,1 @@
-export default function (file: string): string;
+export default function (source: string): string;
