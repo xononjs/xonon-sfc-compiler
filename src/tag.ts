@@ -1,5 +1,5 @@
 const TagParser = {
-  parse(tags) {
+  parse(tags: any[]) {
     const nodes = []
     const listeners = []
 
@@ -9,7 +9,7 @@ const TagParser = {
     return { nodes, listeners }
   },
 
-  parseTags(nodes, listeners, parent, index, tags) {
+  parseTags(nodes: { index: any; type: string; attrs: {}; name: any; parent: any }[], listeners: { index: any; event: any; handler: any }[], parent: number | null, index: number, tags: any[]) {
     tags.forEach(tag => {
       if (tag.nodeName === '#text') {
         index = this.parseText(nodes, index, parent, tag)
@@ -21,15 +21,15 @@ const TagParser = {
     return index
   },
 
-  parseText(nodes, index, parent, tag) {
+  parseText(nodes: any[], index: number, parent: number | null, tag: { value: any }) {
     let text = tag.value
     let startBracket, endBracket
 
     while (true) {
-      startBracket = text.search('{')
+      startBracket = text.search('{{')
 
       if (startBracket === 0) {
-        endBracket = text.search('}')
+        endBracket = text.search('}}')
         index = this.addBinding(nodes, index, parent, text.substr(1, endBracket - 1))
         text = text.substr(endBracket + 1)
         if (!text) break
@@ -45,7 +45,7 @@ const TagParser = {
     return index
   },
 
-  addText(nodes, index, parent, value) {
+  addText(nodes: { index: any; type: string; value: any; parent: any }[], index: number, parent: any, value: string) {
     if (index === 0 && value.trim() === '') return index
 
     nodes.push({
@@ -58,7 +58,7 @@ const TagParser = {
     return index + 1
   },
 
-  addBinding(nodes, index, parent, name) {
+  addBinding(nodes: { index: any; type: string; name: any; parent: any }[], index: number, parent: any, name: any) {
     nodes.push({
       index,
       type: 'binding',
@@ -73,7 +73,7 @@ const TagParser = {
     const attrs = {}
 
     tag.attrs.forEach(attr => {
-      if (attr.name.match(/^on:/)) {
+      if (attr.name.match(/^when:/)) {
         listeners.push({
           index,
           event: attr.name.split(':')[1],
@@ -95,7 +95,7 @@ const TagParser = {
     return this.parseTags(nodes, listeners, index, index + 1, tag.childNodes)
   },
 
-  removeTrailingWhitespace(nodes) {
+  removeTrailingWhitespace(nodes: any[]) {
     let i = nodes.length - 1
     let node = nodes[i]
 

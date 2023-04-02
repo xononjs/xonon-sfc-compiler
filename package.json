@@ -1,6 +1,6 @@
 {
   "name": "@xonon/sfc-compiler",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "./build/index.cjs",
   "type": "module",
@@ -20,12 +20,14 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-terser": "^0.4.0",
     "@types/js-beautify": "^1.13.3",
+    "@xonon/rollup-plugin": "^1.0.1",
     "acorn": "^8.8.2",
     "code-red": "^1.0.0",
     "js-beautify": "^1.14.7",
     "parse5": "^7.1.2"
   },
   "devDependencies": {
-    "@types/node": "^18.15.11"
+    "@types/node": "^18.15.11",
+    "rollup": "^3.20.2"
   }
 }
