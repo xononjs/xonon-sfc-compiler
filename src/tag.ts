@@ -69,11 +69,11 @@ const TagParser = {
     return index + 1
   },
 
-  parseElement(nodes, listeners, index, parent, tag) {
+  parseElement(nodes: { index: any; type: string; attrs: {}; name: any; parent: any }[], listeners: { index: any; event: any; handler: any }[], index: number, parent: any, tag: { attrs: any[]; nodeName: any; childNodes: any }) {
     const attrs = {}
 
     tag.attrs.forEach(attr => {
-      if (attr.name.match(/^when:/)) {
+      if (attr.name.match(/^on:/)) {
         listeners.push({
           index,
           event: attr.name.split(':')[1],

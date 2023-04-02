@@ -1,6 +1,6 @@
 {
   "name": "@xonon/sfc-compiler",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "./build/index.cjs",
   "type": "module",
@@ -9,8 +9,7 @@
   "scripts": {
     "build:common": "tsc && pnpx rollup -c rollup.config.js -f cjs -o build/index.cjs",
     "build:module": "tsc && pnpx rollup -c rollup.config.js -f module -o build/index.mjs",
-    "build": "pnpm build:common && pnpm build:module",
-    "publish": "pnpm publish --no-git-checks --access public"
+    "build": "pnpm build:common && pnpm build:module"
   },
   "keywords": [],
   "author": "",
