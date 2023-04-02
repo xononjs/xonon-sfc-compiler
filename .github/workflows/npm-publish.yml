@@ -35,6 +35,6 @@ jobs:
         with:
           version: 8
       - run: pnpm install --no-frozen-lockfile
-      - run: pnpm publish
+      - run: pnpm publish --access public --no-git-cheack
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
