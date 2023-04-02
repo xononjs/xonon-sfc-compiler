@@ -73,7 +73,7 @@ const TagParser = {
     const attrs = {}
 
     tag.attrs.forEach(attr => {
-      if (attr.name.match(/^->/)) {
+      if (attr.name.match(/^when:/)) {
         listeners.push({
           index,
           event: attr.name.split(':')[1],
